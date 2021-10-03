@@ -9,7 +9,7 @@ int height[2005];
 int MaxHeight=1;  
 vector<int>roots;             //存根，把所有根丟下去搜
 
-void bfs(int pos){
+void dfs(int pos){
     vis[pos]=1;
     stack<int>stk;
     stk.push(pos);
@@ -49,7 +49,7 @@ signed  main(){
     memset(height,0,sizeof(height));
     for(auto root:roots){               //把所有根丟下去搜
         height[root]=1;
-        bfs(root);
+        dfs(root);
     }
     cout<<MaxHeight;
 }
