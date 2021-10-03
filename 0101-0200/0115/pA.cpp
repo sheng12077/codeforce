@@ -11,17 +11,17 @@ vector<int>roots;             //存根，把所有根丟下去搜
 
 void bfs(int pos){
     vis[pos]=1;
-    queue<int>que;
-    que.push(pos);
-    while(!que.empty()){
-        int parent=que.front();
-        que.pop();
+    stack<int>stk;
+    stk.push(pos);
+    while(!stk.empty()){
+        int parent=stk.top();
+        stk.pop();
         for(auto child:graph[parent]){
             if(!vis[child]){                        //沒走過
                 vis[child]=1;                       //改成已走訪 
                 height[child]=height[parent]+1;     //父節點的高度+1
                 MaxHeight=max(MaxHeight,height[child]);
-                que.push(child);                    //丟下去繼續搜
+                stk.push(child);                    //丟下去繼續搜
             }
         }
     }
